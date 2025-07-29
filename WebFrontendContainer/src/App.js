@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AuthProvider, { useAuth } from "./components/AuthProvider";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -27,23 +27,21 @@ function App() {
 
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
-          <header className="App-header" style={{ minHeight: 0, padding: 0 }}>
-            <button
-              className="theme-toggle"
-              onClick={toggleTheme}
-              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-            >
-              {theme === "light" ? "🌙 Dark" : "☀️ Light"}
-            </button>
-            <Navbar />
-          </header>
-          <main>
-            <AppRoutes />
-          </main>
-        </div>
-      </Router>
+      <div className="App">
+        <header className="App-header" style={{ minHeight: 0, padding: 0 }}>
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+          </button>
+          <Navbar />
+        </header>
+        <main>
+          <AppRoutes />
+        </main>
+      </div>
     </AuthProvider>
   );
 }
